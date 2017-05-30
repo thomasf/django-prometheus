@@ -1,8 +1,8 @@
 # django-prometheus
 Export Django monitoring metrics for Prometheus.io
 
-[![PyPI version](https://badge.fury.io/py/django-prometheus.svg)](http://badge.fury.io/py/django-prometheus)
-[![Build Status](https://travis-ci.org/korfuri/django-prometheus.svg?branch=master)](https://travis-ci.org/korfuri/django-prometheus)
+[![PyPI version](https://badge.fury.io/py/django-prometheus-tf.svg)](http://badge.fury.io/py/django-prometheus-py-pa)
+[![Build Status](https://travis-ci.org/py-pa/django-prometheus.svg?branch=master)](https://travis-ci.org/py-pa/django-prometheus)
 
 ## Usage
 
@@ -115,7 +115,7 @@ scrape `127.0.0.1:8001` can be found in `examples/prometheus`.
 Here's an example of a PromDash displaying some of the metrics
 collected by django-prometheus:
 
-![Example dashboard](https://raw.githubusercontent.com/korfuri/django-prometheus/master/examples/django-promdash.png)
+![Example dashboard](https://raw.githubusercontent.com/py-pa/django-prometheus/master/examples/django-promdash.png)
 
 ## Adding your own metrics
 
