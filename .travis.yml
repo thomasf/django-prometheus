@@ -1,28 +1,43 @@
 language: python
 python:
-  - "3.6"
-  - "3.5"
-  - "3.4"
+- '3.6'
+- '3.5'
+- '3.4'
 env:
-  - DJANGO_VERSION=1.11
-  - DJANGO_VERSION=1.10
-  - DJANGO_VERSION=1.9
-  - DJANGO_VERSION=1.8
+- DJANGO_VERSION=1.11
+- DJANGO_VERSION=1.10
+- DJANGO_VERSION=1.9
+- DJANGO_VERSION=1.8
 services:
-  - mysql
-  - postgresql
+- mysql
+- postgresql
 matrix:
   exclude:
-    - python: "3.4"
-      env: DJANGO_VERSION=1.11
-    - python: "3.5"
-      env: DJANGO_VERSION=1.11
+  - python: '3.6'
+    env: DJANGO_VERSION=1.8
+  - python: '3.6'
+    env: DJANGO_VERSION=1.9
+  - python: '3.6'
+    env: DJANGO_VERSION=1.10
 install:
-  - pip install -r requirements.txt
-  - pip install -q Django==$DJANGO_VERSION
-  - mysql -e 'create database django_prometheus_1;'
+- pip install -r requirements.txt
+- pip install -q Django==$DJANGO_VERSION
+- mysql -e 'create database django_prometheus_1;'
 script:
-  - python setup.py test
-  - (cd django_prometheus/tests/end2end; PYTHONPATH=../../.. python manage.py test)
-  - isort -df -c -rc
-  - flake8 --config .flake8rc
+- python setup.py test
+- "(cd django_prometheus/tests/end2end; PYTHONPATH=../../.. python manage.py test)"
+- isort -df -c -rc
+- flake8 --config .flake8rc
+deploy:
+  provider: pypi
+  user: py-pa
+  distributions: sdist bdist_wheel
+  password:
+    secure: CASOJDTs7FOgCeVbqLZeB/Gn67qtuEO6jbWa2YjiHKPxw/5OQp8anUB1aBTPfyHca3Nw2JQYDIf0E+GSKK17FtL63G6yHQ/TzVU8bq+FSd5tjkkOlmlcHdKP35hufVgputsDF3WFZtyPFDTxb3vZOvBOU5gAkT/qMORIG4ewA6KU5lRCy7X+OZqcfDsL1yr/M7ZibpMPueOwa98Abxd5ViW8eFAEHiIPb8K7UTb0tv53dwEQTHwL+9qqUjbEmBXiTbY6X/t9Z7XJrIXU9Sneb5G5CIvVZ+ANdsaohZulQhb1kmO1RzMrhnVtdBQEStno/A9TRWxbxAekoOG+la3RreKZP7Iyp0n/RsRP2GTxr+dz/wGoDkvI7DasK3x9rj76B8Pj9D02vktyHZa3jiNpiA2yKOV+Mp0Rfa8C73V4jDCW+VJzkJLIqpE8c+CZg8kM7GiN1VvlslhcS1gRmT3CcaQ5qpl1qN+Z4CG/ff+cWwIJxX23wQ8y+7bkQzjdPDOlEAEOOyfV7MEqCO+l7wtmjyhHUHR1upCVg22HBLUVf0Yu8mmPkY7elxH0ZW7oR5469c7Yf9Skiioa5OOXxvg8bGxpx2hq3Ke2G2zEffSmpxw4upC2mls72GhF3JTSv/+jA1nrQvTM49y1tgjVAjAjZyDbVRiDhRjyOSDztjkCE4U=
+  on:
+    tags: true
+    python: '3.5'
+    condition: "$DJANGO_VERSION = 1.11"
+    repo: py-pa/django-prometheus
+notifications:
+  email: false
