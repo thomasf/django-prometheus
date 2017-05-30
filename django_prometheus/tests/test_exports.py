@@ -2,7 +2,7 @@
 import socket
 import unittest
 
-from mock import patch, call, ANY, MagicMock
+from mock import ANY, MagicMock, call, patch
 
 from django_prometheus.exports import SetupPrometheusEndpointOnPortRange
 

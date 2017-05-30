@@ -1,8 +1,11 @@
-import django
-from django_prometheus.testutils import PrometheusTestCaseMixin
-from django.test import SimpleTestCase
-import unittest
 import sys
+import unittest
+
+import django
+from django.test import SimpleTestCase
+
+from django_prometheus.testutils import PrometheusTestCaseMixin
+
 if sys.version_info[:2] >= (3, 0):
     from unittest.mock import MagicMock
 else:

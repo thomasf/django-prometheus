@@ -1,7 +1,9 @@
-import django
-from django_prometheus.testutils import PrometheusTestCaseMixin
-from django.test import SimpleTestCase
 import unittest
+
+import django
+from django.test import SimpleTestCase
+
+from django_prometheus.testutils import PrometheusTestCaseMixin
 
 
 def M(metric_name):

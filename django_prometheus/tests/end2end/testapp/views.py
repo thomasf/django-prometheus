@@ -1,10 +1,13 @@
+import os
+import time
+
 import django
 from django.db import connections
 from django.shortcuts import render
 from django.template.response import TemplateResponse
+
 from testapp.models import Lawn
-import os
-import time
+
 if django.VERSION >= (1, 8):
     from django.http import FileResponse
 

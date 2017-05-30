@@ -1,5 +1,6 @@
-from django_prometheus.testutils import PrometheusTestCaseMixin
 from django.test import TestCase
+
+from django_prometheus.testutils import PrometheusTestCaseMixin
 from testapp.models import Dog, Lawn
 
 

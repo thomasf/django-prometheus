@@ -3,15 +3,13 @@
 https://github.com/korfuri/django-prometheus
 """
 
-# Import all files that define metrics. This has the effect that
-# `import django_prometheus` will always instanciate all metric
-# objects right away.
-import django_prometheus.middleware
-import django_prometheus.models
+
+import django_prometheus.middleware  # side effect: create metric objects # noqa
+import django_prometheus.models  # side effect: create metric objects # noqa
 
 # Import pip_prometheus to export the pip metrics automatically.
 try:
-    import pip_prometheus
+    import pip_prometheus  # noqa
 except ImportError:
     # If people don't have pip, don't export anything.
     pass

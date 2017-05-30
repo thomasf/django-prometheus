@@ -1,2 +1,1 @@
-# Import all metrics
-from django_prometheus.db.metrics import *
+from django_prometheus.db.metrics import *  # side effect: create metric objects # noqa

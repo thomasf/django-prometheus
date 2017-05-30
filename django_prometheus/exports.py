@@ -1,16 +1,18 @@
-from django.http import HttpResponse
+import logging
+import os
+import socket
+import threading
+
+import prometheus_client
 from django.conf import settings
+from django.http import HttpResponse
+
 try:
     # Python 2
     from BaseHTTPServer import HTTPServer
 except ImportError:
     # Python 3
     from http.server import HTTPServer
-import socket
-import logging
-import os
-import prometheus_client
-import threading
 
 
 logger = logging.getLogger(__name__)

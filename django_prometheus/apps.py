@@ -1,9 +1,10 @@
+
 from django.apps import AppConfig
 from django.conf import settings
+
+import django_prometheus  # side effect: create metric objects # noqa
 from django_prometheus.exports import SetupPrometheusExportsFromConfig
 from django_prometheus.migrations import ExportMigrations
-# unused import to force instantiating the metric objects at startup.
-import django_prometheus
 
 
 class DjangoPrometheusConfig(AppConfig):
