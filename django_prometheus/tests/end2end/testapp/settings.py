@@ -109,18 +109,18 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'HOST': os.getenv('PG_HOST', 'localhost'),
+        'PORT': os.getenv('PG_PORT', '5432'),
     },
 
     # Comment this to not test django_prometheus.db.backends.mysql.
     'mysql': {
         'ENGINE': 'django_prometheus.db.backends.mysql',
         'NAME': 'django_prometheus_1',
-        'USER': 'travis',
+        'USER': os.getenv('MYSQL_USER', 'travis'),
         'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'HOST': os.getenv('MYSQL_HOST', 'localhost'),
+        'PORT': os.getenv('MYSQL_PORT', '3306'),
     },
 
     # The following databases are used by test_db.py only

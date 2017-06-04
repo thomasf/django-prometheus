@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+  postgres:
+    image: "postgres:9.6"
+    ports:
+      - "5432:5432"
+  mysql:
+    image: "mysql:5.7"
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=django_prometheus_1
+      - MYSQL_USER=travis
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_PASSWORD=
+      - MYSQL_ROOT_PASSWORD=
